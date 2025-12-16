@@ -1,0 +1,12 @@
+.navbar {
+    padding: 1rem 2rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.btn {
+    margin-left: 0.5rem;
+}

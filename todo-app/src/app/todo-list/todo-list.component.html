@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    <div class="todo-list">
+        <div *ngFor="let todo of todos | todoPipe" class="todo-item p-3 mb-2" appTodo
+            [ngClass]="{'urgent-border': todo.urgent}">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center flex-grow-1">
+                    <fa-icon [icon]="todo.done ? faCheck : faX" [style.color]="todo.done ? 'green' : 'red'" class="me-3"
+                        size="lg">
+                    </fa-icon>
+                    <span [style.text-decoration]="todo.done ? 'line-through' : 'none'">
+                        {{ todo.name }}
+                    </span>
+                </div>
+                <div class="action-icons">
+                    <fa-icon [icon]="faList" class="icon-action me-3" (click)="showDetail(todo)" title="Détails">
+                    </fa-icon>
+                    <fa-icon [icon]="faPenToSquare" class="icon-action me-3" (click)="showUpdate(todo)"
+                        title="Modifier">
+                    </fa-icon>
+                    <fa-icon [icon]="faTrash" class="icon-action" (click)="deleteTodo(todo)" title="Supprimer">
+                    </fa-icon>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="todos.length === 0" class="text-center mt-5">
+            <p class="text-muted">Aucune tâche pour le moment. Cliquez sur "New" pour en ajouter une.</p>
+        </div>
+    </div>
+</div>
+
+<app-todo-detail *ngIf="showDetailModal && selectedTodo" [todo]="selectedTodo" (closeModal)="onDetailClose()">
+</app-todo-detail>
+
+<app-update-todo *ngIf="showUpdateModal && selectedTodo" [todo]="selectedTodo" (closeModal)="onUpdateClose()">
+</app-update-todo>

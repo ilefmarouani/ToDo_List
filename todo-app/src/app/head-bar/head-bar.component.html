@@ -1,0 +1,11 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1" style="color: #e83e8c;">My Todo List</span>
+    <div class="d-flex">
+      <button class="btn btn-dark me-2" routerLink="/todos" (click)="onNavigate()" *ngIf="authService.isAuthenticated()">Todos</button>
+      <button class="btn btn-dark me-2" routerLink="/new" (click)="onNavigate()" *ngIf="authService.isAuthenticated()">New</button>
+      <button class="btn btn-dark" routerLink="/login" (click)="onNavigate()" *ngIf="!authService.isAuthenticated()">Sign In</button>
+      <button class="btn btn-dark" (click)="onSignOut()" routerLink="/login" *ngIf="authService.isAuthenticated()">Sign Out</button>
+    </div>
+  </div>
+</nav>

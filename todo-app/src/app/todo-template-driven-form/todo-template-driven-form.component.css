@@ -1,0 +1,35 @@
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-header h3 {
+    color: #333;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-dark:hover {
+    background-color: #23272b;
+    border-color: #1d2124;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}

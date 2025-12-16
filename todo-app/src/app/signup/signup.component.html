@@ -1,0 +1,67 @@
+<div class="signup-container">
+    <div class="signup-box">
+        <h3 class="text-center mb-4">Create Account</h3>
+
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="name" class="form-label" style="color: #e83e8c;">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Your name"
+                    [class.is-invalid]="name && name.invalid && name.touched">
+                <div class="invalid-feedback" *ngIf="name && name.invalid && name.touched">
+                    <div *ngIf="name.errors?.['required']">Le nom est requis</div>
+                    <div *ngIf="name.errors?.['minlength']">Au moins 2 caractères</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="login" class="form-label" style="color: #e83e8c;">Email</label>
+                <input type="email" class="form-control" id="login" formControlName="login"
+                    placeholder="example@email.com" [class.is-invalid]="login && login.invalid && login.touched">
+                <div class="invalid-feedback" *ngIf="login && login.invalid && login.touched">
+                    <div *ngIf="login.errors?.['required']">L'email est requis</div>
+                    <div *ngIf="login.errors?.['email']">Email invalide</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label" style="color: #e83e8c;">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password"
+                    placeholder="Min 6 caractères"
+                    [class.is-invalid]="password && password.invalid && password.touched">
+                <div class="invalid-feedback" *ngIf="password && password.invalid && password.touched">
+                    <div *ngIf="password.errors?.['required']">Le mot de passe est requis</div>
+                    <div *ngIf="password.errors?.['minlength']">Au moins 6 caractères</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label" style="color: #e83e8c;">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+                    placeholder="Confirmez le mot de passe"
+                    [class.is-invalid]="confirmPassword && confirmPassword.invalid && confirmPassword.touched">
+                <div class="invalid-feedback"
+                    *ngIf="confirmPassword && confirmPassword.invalid && confirmPassword.touched">
+                    <div *ngIf="confirmPassword.errors?.['required']">La confirmation est requise</div>
+                    <div *ngIf="confirmPassword.errors?.['passwordMismatch']">Les mots de passe ne correspondent pas
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                {{ errorMessage }}
+            </div>
+
+            <div *ngIf="successMessage" class="alert alert-success" role="alert">
+                {{ successMessage }}
+            </div>
+
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-dark" [disabled]="!signupForm.valid">Sign Up</button>
+            </div>
+
+            <div class="text-center">
+                <p class="mb-0">Already have an account? <a routerLink="/login" class="signup-link">Sign In</a></p>
+            </div>
+        </form>
+    </div>
+</div>

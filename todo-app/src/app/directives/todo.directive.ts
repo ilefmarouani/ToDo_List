@@ -1,0 +1,23 @@
+import { Directive, ElementRef, HostListener } from '@angular/core';
+
+@Directive({
+    selector: '[appTodo]',
+    standalone: true
+})
+export class TodoDirective {
+
+    constructor(private el: ElementRef) { }
+
+    @HostListener('mouseenter') onMouseEnter() {
+        this.setShadow('5px 5px 10px 2px rgba(0,0,0,.5)');
+    }
+
+    @HostListener('mouseleave') onMouseLeave() {
+        this.setShadow('');
+    }
+
+    private setShadow(shadow: string) {
+        this.el.nativeElement.style.boxShadow = shadow;
+    }
+
+}

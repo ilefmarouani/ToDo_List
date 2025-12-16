@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <div class="form-container">
+        <div class="form-header">
+            <h3>New task</h3>
+        </div>
+        <form #todoForm="ngForm" (ngSubmit)="addTodo()">
+            <div class="mb-3">
+                <label for="title" class="form-label" style="color: #e83e8c;">Title</label>
+                <input type="text" class="form-control" id="title" name="name" [(ngModel)]="todo.name" required
+                    placeholder="Task title">
+            </div>
+
+            <div class="mb-3">
+                <label for="date" class="form-label" style="color: #e83e8c;">Date</label>
+                <input type="date" class="form-control" id="date" name="end_date" [(ngModel)]="todo.end_date" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label" style="color: #e83e8c;">Description</label>
+                <textarea class="form-control" id="description" name="description" [(ngModel)]="todo.description"
+                    rows="4" required placeholder="Task description"></textarea>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+                <button type="submit" class="btn btn-dark" [disabled]="!todoForm.form.valid">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
